@@ -44,7 +44,7 @@ int main()
         getcwd(cwd, sizeof(cwd));
 
         //  cetak prompt "$ " 
-        printf("kelompok_SO_Pertemuan4:~%s$ ",cwd);
+        printf("kelompok10_SO:~%s$ ",cwd);
 
         //  baca string perintah
         fgets(cmd, sizeof cmd, stdin);
@@ -57,8 +57,8 @@ int main()
         if (!strcmp(args[0], "exit"))
 			break;
 
+
         //  jika perintah = "cd"
-                
         if (!strcmp(args[0], "cd")) {
 			int val;
 			if (args[1]) {
@@ -91,13 +91,14 @@ int main()
         else
         {
             //      exec string perintah
-            val = execlp(args[0], *args, NULL);
+            val = execvp(args[0], args);
             
             //      cetak pesan error
             //      keluar dengan kode -1
 
             if (val == -1) {
 				puts("command not found");
+                break;
 			}
         }
               
