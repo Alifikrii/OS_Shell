@@ -31,27 +31,62 @@ void split_words(char *string, char **words)
         words[i+1] = strtok(NULL, " \n");
 }
 
+//fungsi history
+void get_history(int count, char **history)
+{
+    int i;
+    for ( i = 0; i < count; i++)
+    {
+        printf("%d -> %s \n", i+1, history[i]);
+    }
+    
+}
+
 int main()
 {
     char cmd[80];                           //  string perintah
     char *args[20];                         //  argumen string perintah
     char cwd[PATH_MAX];                     //string untuk working directories
-
+    char *history[PATH_MAX];                //untuk menyimpan sbeanyak history terakhir 
+    int count=0;
+    char person[10];
     while (1)
     {
+        //ini buat tambahan nama didepan shell
+        FILE *fp = popen( "whoami", "r" );
+        fgets(person, sizeof person, fp);
+        if (person[strlen(person) - 1] == '\n')
+			person[strlen(person) - 1] = '\0';
+
+        //untuk mendapat history 
+        if (!strcmp(cmd, "history"))
+        {
+            get_history(count, history);
+        }
 
         // untuk mendapat direktori sekarang
         getcwd(cwd, sizeof(cwd));
 
         //  cetak prompt "$ " 
-        printf("kelompok10_SO:~%s$ ",cwd);
+        printf("%s@KELOMPOK-10-SO:~%s$ ",person,cwd);
 
         //  baca string perintah
         fgets(cmd, sizeof cmd, stdin);
 
+        //biar ngak segment fault core dumped
+        if (cmd[0] == '\n')
+			continue;
+        else 
+        {
+            //untuk hitung dan store historynya
+            history[count]=strdup(cmd);
+            count++;
+        }
+
         //  pecah string perintah per argumen
         split_words(cmd, args);
 
+        
         //  jika perintah = "exit"
         //      break
         if (!strcmp(args[0], "exit"))
