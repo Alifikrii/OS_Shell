@@ -16,6 +16,13 @@ Contoh masukan dan keluaran
     $ exit
 */
 
+// Kelompok 10
+// Andi Muhammad Alifikri (G64190005)
+// Sigit Raditya Pangestu (G64190071)
+// Tifanee Anindhita (G64190080)
+// Risda Awalia (G64190106)
+
+
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
@@ -52,6 +59,7 @@ int main()
     char person[10];
     while (1)
     {
+        
         //ini buat tambahan nama didepan shell
         FILE *fp = popen( "whoami", "r" );
         fgets(person, sizeof person, fp);
@@ -95,7 +103,7 @@ int main()
 
         //  jika perintah = "cd"
         if (!strcmp(args[0], "cd")) {
-			int val;
+			int val; 
 			if (args[1]) {
 				char *dir = args[1];
 
