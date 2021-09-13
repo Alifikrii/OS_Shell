@@ -76,7 +76,7 @@ int main()
         getcwd(cwd, sizeof(cwd));
 
         //  cetak prompt "$ " 
-        printf("%s@KELOMPOK-10-SO:~%s$ ",person,cwd);
+        printf("%s@KELOMPOK-10-SO:~%s \n$ ",person,cwd);
 
         //  baca string perintah
         fgets(cmd, sizeof cmd, stdin);
@@ -141,7 +141,8 @@ int main()
 
             if (val == -1) {
 				puts("command not found");
-                break;
+                return -1;
+
 			}
         }
               
