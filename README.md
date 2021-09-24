@@ -1,5 +1,7 @@
-# SO_pert4_Kelompok_10
-Ini adalah tugas membuat shell pertemuan ke 4 matakuliah Sistem Operasi
+# Operation System (OS)
+
+#MAKE SHELL
+This repository contains code for a shell program in the C programming language, this is a simple example of a shell on Linux or commonly called a terminal.
 
 ## cara build dan run 
 
