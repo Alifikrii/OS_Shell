@@ -1,6 +1,6 @@
 # Operation System (OS)
 
-#MAKE SHELL
+# MAKE SHELL
 This repository contains code for a shell program in the C programming language, this is a simple example of a shell on Linux or commonly called a terminal.
 
 ## cara build dan run 
